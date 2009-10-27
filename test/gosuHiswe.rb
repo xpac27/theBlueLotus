@@ -4,7 +4,7 @@ require 'rubygems'
 require 'gosu'
 
 # import de classes.
-require 'test/fond'
+require 'test/curseur'
 
 class MyWindow < Gosu::Window
   def initialize
@@ -13,7 +13,7 @@ class MyWindow < Gosu::Window
 
     @text = Gosu::Font.new(self, Gosu::default_font_name , 24)
 #    Instance de mon sprite
-    @truc = Fond.new(self)
+    @truc = Curseur.new(self)
     @truc.teleportation(rand(640), rand(480))
   end
 

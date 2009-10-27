@@ -1,6 +1,6 @@
-class Fond
+class Curseur
   def initialize(window)
-    @image = Gosu::Image.new(window,'media/tile.png', true)
+    @image = Gosu::Image.new(window,'media/arrow.png', true)
     @x = @y = @angle = 0.0
   end
 
@@ -12,4 +12,3 @@ class Fond
     @image.draw_rot(@x, @y, 1, @angle)
   end
 end
-
