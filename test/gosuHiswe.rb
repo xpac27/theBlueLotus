@@ -17,7 +17,7 @@ class MyWindow < Gosu::Window
 #    Instance du curseur
     @monCurseur = Curseur.new(self)
 #   Instance du monde
-    @world = Fond.new(self, 640, 480)
+    @world = Fond.new(self)
   end
 
   def update
@@ -47,7 +47,7 @@ class MyWindow < Gosu::Window
 
   def draw
     @monCurseur.draw
-    @text.draw($mouseX.to_s+ "/" + $mouseY.to_s, 10, 10,0, 1.0, 1.0, 0xffffff00)
+    @text.draw($mouseX.to_s+ "/" + $mouseY.to_s, 10, 10,5, 1.0, 1.0, 0xff000000)
     @world.draw
   end
 end

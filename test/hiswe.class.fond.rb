@@ -1,12 +1,12 @@
 class Fond
-  def initialize(window, size_x, size_y)
+  def initialize(window)
     @window = window
     @x = @y = 0.0
     @vx = @vy = 0.0
     @width = 32
     @height = 32
-    @iteration_x = (size_x / @width).round + 1
-    @iteration_y = (size_y / @height).round + 1
+    @iteration_x = ( window.width / @width).round + 1
+    @iteration_y = ( window.height / @height).round + 1
     @image = Gosu::Image.new(window, 'media/map_monde.png', true, 104, 152, @width, @height)
   end
 
