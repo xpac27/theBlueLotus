@@ -81,19 +81,21 @@ class World
   end
 
   def translate(x, y)
-    if @vx < 3.0 and @vx > -3.0 then @vx += x end
-    if @vy < 3.0 and @vy > -3.0 then @vy += y end
+    @vx += x if @vx < 3.0 and @vx > -3.0
+    @vy += y if @vy < 3.0 and @vy > -3.0
   end
 
   def update
     @x += @vx
     @y += @vy
-    if @vx > 0 then @vx -= 0.2 end
-    if @vx < 0 then @vx += 0.2 end
-    if @vy > 0 then @vy -= 0.2 end
-    if @vy < 0 then @vy += 0.2 end
-    if @vx > -0.2 and @vx < 0.2 then @vx = 0 end
-    if @vy > -0.2 and @vy < 0.2 then @vy = 0 end
+
+    @vx -= 0.2 if @vx > 0
+    @vx += 0.2 if @vx < 0
+    @vy -= 0.2 if @vy > 0
+    @vy += 0.2 if @vy < 0
+
+    @vx = 0 if @vx > -0.2 and @vx < 0.2
+    @vy = 0 if @vy > -0.2 and @vy < 0.2
   end
 end
 
