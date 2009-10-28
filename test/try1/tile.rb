@@ -1,6 +1,6 @@
 class Tile
   def initialize(window)
-    @image = Gosu::Image.new(window, 'media/tile.png', true)
+    @image = Gosu::Image.new(window, 'media/empty.png', true)
   end
 
   def draw(x, y)

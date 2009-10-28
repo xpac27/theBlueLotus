@@ -2,24 +2,42 @@ class Player
 
   attr_reader :x, :y
 
+  SPRITE_WIDTH = 48
+  SPRITE_HEIGHT = 64
+
   def initialize(window)
-    @image = Gosu::Image.new(window, 'media/blurp.png', true)
+    @sprites = Gosu::Image.load_tiles(window, 'media/ladygaga.png', SPRITE_WIDTH, SPRITE_HEIGHT, true)
     @x = 0.0
     @y = 0.0
+    @speed = 3
+    @curent_tile = 0
+    @direction = 0
   end
 
   def update
   end
 
   def draw(window)
-    px = (window.width / 2) - (@image.width / 2)
-    py = (window.height/ 2) - (@image.height / 2)
-    @image.draw(px, py, 2)
+    # calculate screen's center
+    px = (window.width / 2) - (@sprites[@curent_tile].width / 2)
+    py = (window.height/ 2) - (@sprites[@curent_tile].height / 2)
+
+    # find which sprite to use
+    s = @curent_tile + (4 * @direction)
+
+    @sprites[s].draw(px, py, 2)
   end
 
   def translate(x, y)
-    @x += x
-    @y += y
+    @direction = 2 if x == 1
+    @direction = 1 if x == -1
+    @direction = 0 if y == 1
+    @direction = 3 if y == -1
+
+    @x += x * @speed
+    @y += y * @speed
+
+    @curent_tile = (Gosu::milliseconds / 100) % 4
   end
 end
 

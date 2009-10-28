@@ -11,8 +11,6 @@ class World
 
   def update(window)
     @player.update
-
-#    @tiles.each{|k, v| puts k }
   end
 
   def draw(window)
