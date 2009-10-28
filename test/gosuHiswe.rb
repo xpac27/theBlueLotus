@@ -17,13 +17,11 @@ class MyWindow < Gosu::Window
 #    Instance du curseur
     @monCurseur = Curseur.new(self)
 #   Instance du monde
-    @world = Fond.new(self)
+    @world = Fond.new(self, 640, 480)
   end
 
   def update
-    if button_down? Gosu::Button::KbEscape
-     w.close
-    end
+    close if button_down? Gosu::Button::KbEscape
 
     $mouseX = Integer(mouse_x)
     $mouseY = Integer(mouse_y)
