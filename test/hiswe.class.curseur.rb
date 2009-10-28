@@ -1,7 +1,8 @@
 class Curseur
   def initialize(window)
-    @image = Gosu::Image.new(window,'media/arrow.png', true)
+    @image = Gosu::Image.new(window,'media/square_cursor.png', true)
     @x = @y = @angle = 0.0
+    puts window.width
   end
 
   def teleportation(x, y)
