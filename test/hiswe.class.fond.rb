@@ -3,11 +3,12 @@ class Fond
     @window = window
     @x = @y = 0.0
     @vx = @vy = 0.0
-    @width = 32
-    @height = 32
+    @width = 16
+    @height = 16
     @iteration_x = ( window.width / @width).round + 1
     @iteration_y = ( window.height / @height).round + 1
     @image = Gosu::Image.new(window, 'media/map_monde.png', true, 104, 152, @width, @height)
+    @peinture = Gosu::Image.new(window, 'media/map_monde.png', true, 142, 192, @width, @height)
   end
 
   def draw
@@ -23,6 +24,12 @@ class Fond
   def translate(x, y)
     if @vx < 3.0 and @vx > -3.0 then @vx += x end
     if @vy < 3.0 and @vy > -3.0 then @vy += y end
+  end
+
+  def click(window)
+    x = window.mouse_x
+    y = window.mouse_y
+    @peinture.draw(Integer(x), Integer(y),1)
   end
 
   def update

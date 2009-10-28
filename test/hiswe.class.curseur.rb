@@ -6,7 +6,9 @@ class Curseur
     puts @image.width
   end
 
-  def teleportation(x, y)
+  def teleportation(window)
+    x = window.mouse_x
+    y = window.mouse_y
     pos_x = x - (x % @image.width) + @image.width / 2
     pos_y = y - (y % @image.height) + @image.height / 2
     @x, @y = pos_x, pos_y

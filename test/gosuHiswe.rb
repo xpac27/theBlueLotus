@@ -26,21 +26,14 @@ class MyWindow < Gosu::Window
     $mouseX = Integer(mouse_x)
     $mouseY = Integer(mouse_y)
 
-    @monCurseur.teleportation($mouseX, $mouseY)
-
+    @monCurseur.teleportation(self)
+    @world.click(self) if button_down?(Gosu::Button::MsLeft)
 #   MaJ du monde
-    if button_down?(Gosu::Button::KbUp)
-      @world.translate(0, 1)
-    end
-    if button_down?(Gosu::Button::KbDown)
-      @world.translate(0, -1)
-    end
-    if button_down?(Gosu::Button::KbRight)
-      @world.translate(-1, 0)
-    end
-    if button_down?(Gosu::Button::KbLeft)
-      @world.translate(1, 0)
-    end
+    @world.translate(0, 1) if button_down?(Gosu::Button::KbUp)
+    @world.translate(0, -1) if button_down?(Gosu::Button::KbDown)
+    @world.translate(-1, 0) if button_down?(Gosu::Button::KbRight)
+    @world.translate(1, 0) if button_down?(Gosu::Button::KbLeft)
+
     @world.update
 
   end
