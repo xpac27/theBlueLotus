@@ -2,6 +2,7 @@
 
 require 'rubygems'
 require 'gosu'
+require 'test/try1/fps'
 require 'test/try1/world'
 require 'test/try1/player'
 require 'test/try1/tile'
@@ -13,6 +14,7 @@ class MyWindow < Gosu::Window
     super(640, 480, false)
     self.caption = 'Try1'
 
+    @fps = Fps.new(self, :periodic)
     @world = World.new(self)
   end
 
@@ -35,6 +37,7 @@ class MyWindow < Gosu::Window
 
   def draw
     @world.draw(self)
+    @fps.draw(self)
   end
 
   def button_down(id)
