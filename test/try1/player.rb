@@ -12,6 +12,7 @@ class Player
     @speed = 3
     @current_tile = 0
     @direction = 0
+    @draw_scale = 2
   end
 
   def update
@@ -19,14 +20,14 @@ class Player
 
   def draw(window)
     # calculate screen's center
-    px = (window.width / 2) - (@sprites[@current_tile].width / 2)
-    py = (window.height/ 2) - (@sprites[@current_tile].height / 2)
+    px = (window.width / 2) - ((@sprites[@current_tile].width * @draw_scale) / 2)
+    py = (window.height/ 2) - ((@sprites[@current_tile].height * @draw_scale) / 2)
 
     # find which sprite to use
     s = @current_tile + (4 * @direction)
 
     # draw the sprite
-    @sprites[s].draw(px, py, 2)
+    @sprites[s].draw(px, py, 2, @draw_scale, @draw_scale)
   end
 
   def translate(x, y)

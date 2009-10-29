@@ -4,7 +4,7 @@ class Tile
 
   def initialize
     @type = 'GRASS'
-    @dir = :OO
+    @dir = :O1
   end
 
   def draw(s, x, y)
@@ -16,6 +16,10 @@ class Tile
 
   def base_type
     @type.split('_')[0]
+  end
+
+  def not_origin?
+    @type.include?('_')
   end
 
 end
