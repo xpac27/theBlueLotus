@@ -8,6 +8,7 @@ require 'test/try1/tile'
 
 
 class MyWindow < Gosu::Window
+
   def initialize
     super(640, 480, false)
     self.caption = 'Try1'
@@ -39,6 +40,7 @@ class MyWindow < Gosu::Window
   def button_down(id)
     close if id == Gosu::Button::KbEscape
   end
+
 end
 
 

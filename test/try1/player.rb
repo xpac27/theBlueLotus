@@ -10,7 +10,7 @@ class Player
     @x = 0.0
     @y = 0.0
     @speed = 3
-    @curent_tile = 0
+    @current_tile = 0
     @direction = 0
   end
 
@@ -19,12 +19,13 @@ class Player
 
   def draw(window)
     # calculate screen's center
-    px = (window.width / 2) - (@sprites[@curent_tile].width / 2)
-    py = (window.height/ 2) - (@sprites[@curent_tile].height / 2)
+    px = (window.width / 2) - (@sprites[@current_tile].width / 2)
+    py = (window.height/ 2) - (@sprites[@current_tile].height / 2)
 
     # find which sprite to use
-    s = @curent_tile + (4 * @direction)
+    s = @current_tile + (4 * @direction)
 
+    # draw the sprite
     @sprites[s].draw(px, py, 2)
   end
 
@@ -37,7 +38,8 @@ class Player
     @x += x * @speed
     @y += y * @speed
 
-    @curent_tile = (Gosu::milliseconds / 100) % 4
+    @current_tile = (Gosu::milliseconds / 100) % 4
   end
+
 end
 
