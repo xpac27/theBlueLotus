@@ -13,18 +13,18 @@ class World
     },
 
     'SAND_GRASS' => {
-      :NW => 4,
-      :NN => 5,
+      :N => 5,
+      :E => 10,
+      :S => 13,
+      :W => 8,
       :NE => 6,
-      :EE => 10,
+      :NW => 4,
       :SE => 14,
-      :SS => 13,
       :SW => 12,
-      :WW => 8,
-      :X1 => 3,
-      :X2 => 7,
-      :X3 => 11,
-      :X4 => 15
+      :XNE => 7,
+      :XNW => 3,
+      :XSE => 11,
+      :XSW => 15
     }
   }
 
@@ -41,6 +41,7 @@ class World
 
     set_tile('SAND', 3, 4)
     set_tile('SAND', 5, 5)
+#    set_tile('SAND', 5, 7)
 #    set_tile('SAND', 1, 5)
   end
 
@@ -75,9 +76,31 @@ class World
     if remote.base_type != type
       get_tile(kx - 1, ky - 1).type = type + '_' + remote.base_type
       get_tile(kx - 1, ky - 1).dir = :NW
-#    elsif remote.type != type
-#      get_tile(kx - 1, ky - 1).type = remote.type
-#      get_tile(kx - 1, ky - 1).dir = :NW
+    elsif remote.type != type
+      if remote.dir == :NW
+        get_tile(kx - 1, ky - 1).type = type
+        get_tile(kx - 1, ky - 1).dir = :O1
+      else
+        remote_r = get_tile(kx - 1, ky - 2)
+        remote_l = get_tile(kx - 2, ky - 1)
+        if remote.dir == :NN
+          if remote_r.dir == :NE
+            get_tile(kx - 1, ky - 1).type = remote.type
+            get_tile(kx - 1, ky - 1).dir = :X2
+          else
+            get_tile(kx - 1, ky - 1).type = type
+            get_tile(kx - 1, ky - 1).dir = :O1
+          end
+        elsif remote.dir == :WW
+          if remote_r.dir == :NE
+            get_tile(kx - 1, ky - 1).type = remote.type
+            get_tile(kx - 1, ky - 1).dir = :X4
+          else
+            get_tile(kx - 1, ky - 1).type = type
+            get_tile(kx - 1, ky - 1).dir = :O1
+          end
+        end
+      end
     else
       get_tile(kx - 1, ky - 1).type = type
       get_tile(kx - 1, ky - 1).dir = :O1
@@ -109,9 +132,8 @@ class World
     if remote.base_type != type
       get_tile(kx + 1, ky - 1).type = type + '_' + remote.base_type
       get_tile(kx + 1, ky - 1).dir = :NE
-#    elsif remote.type != type
-#      get_tile(kx + 1, ky - 1).type = remote.type
-#      get_tile(kx + 1, ky - 1).dir = :NE
+    elsif remote.type != type
+      # TODO
     else
       get_tile(kx + 1, ky - 1).type = type
       get_tile(kx + 1, ky - 1).dir = :O1
@@ -143,9 +165,8 @@ class World
     if remote.base_type != type
       get_tile(kx + 1, ky + 1).type = type + '_' + remote.base_type
       get_tile(kx + 1, ky + 1).dir = :SE
-#    elsif remote.type != type
-#      get_tile(kx + 1, ky + 1).type = remote.type
-#      get_tile(kx + 1, ky + 1).dir = :SE
+    elsif remote.type != type
+      # TODO
     else
       get_tile(kx + 1, ky + 1).type = type
       get_tile(kx + 1, ky + 1).dir = :O1
@@ -177,9 +198,8 @@ class World
     if remote.base_type != type
       get_tile(kx - 1, ky + 1).type = type + '_' + remote.base_type
       get_tile(kx - 1, ky + 1).dir = :SW
-#    elsif remote.type != type
-#      get_tile(kx - 1, ky + 1).type = remote.type
-#      get_tile(kx - 1, ky + 1).dir = :SW
+    elsif remote.type != type
+      # TODO
     else
       get_tile(kx - 1, ky + 1).type = type
       get_tile(kx - 1, ky + 1).dir = :O1

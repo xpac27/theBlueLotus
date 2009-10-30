@@ -8,6 +8,8 @@ class Tile
   end
 
   def draw(s, x, y)
+    return unless $SPRITE_TYPE[@type][@dir]
+
     # find image scale
     f = $TILE_SIZE / $SPRITE_SIZE
 
