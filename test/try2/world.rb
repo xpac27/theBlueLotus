@@ -7,6 +7,9 @@ class World
     @player = Player.new(window, self)
     @enemy_1 = Enemy.new(window, self)
     @enemy_2 = Enemy.new(window, self)
+    @enemy_3 = Enemy.new(window, self)
+    @enemy_4 = Enemy.new(window, self)
+    @enemy_5 = Enemy.new(window, self)
     @tiles = {}
 
     @player.x = 4
@@ -16,14 +19,27 @@ class World
     @enemy_1.y = 2
     @enemy_2.x = 4
     @enemy_2.y = 2
+    @enemy_3.x = 4
+    @enemy_3.y = 2
+    @enemy_4.x = 4
+    @enemy_4.y = 2
+    @enemy_5.x = 4
+    @enemy_5.y = 2
 
     @map = [
-      [2, 2, 2, 2, 2, 2, 2, 2],
-      [2, 1, 1, 1, 1, 1, 1, 2],
-      [2, 1, 2, 1, 1, 1, 1, 2],
-      [2, 1, 1, 1, 1, 2, 1, 2],
-      [2, 1, 1, 1, 1, 1, 1, 2],
-      [2, 2, 2, 2, 2, 2, 2, 2]
+      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+      [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+      [2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2],
+      [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2],
+      [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+      [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+      [2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2],
+      [2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 2],
+      [2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2],
+      [2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2],
+      [2, 1, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1, 2],
+      [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
     ]
 
     @map.each_index{|x|
@@ -41,28 +57,29 @@ class World
     @player.update
     @enemy_1.update
     @enemy_2.update
+    @enemy_3.update
+    @enemy_4.update
+    @enemy_5.update
   end
 
   def draw
-    cx =  @window.width / 64 - @player.x
-    cy =  @window.height / 64 - @player.y
+#    cx =  @window.width / 64.0 - @player.x
+#    cy =  @window.height / 64.0 - @player.y
+    cx =  @window.width / 64.0 - (@player.x - @player.y)
+    cy =  @window.height / 64.0 -  ((@player.x + @player.y) / 2.0)
 
     (@window.width / 32).ceil.times do |x|
       (@window.height / 32).ceil.times do |y|
 #        get_tile(x, y).draw(cx + x, cy + y)
-        get_tile(x, y).draw(
-          cx + x - y,
-          cy + ((x + y) / 2)
-        )
-#        get_tile(x, y).draw(
-#          cx + x,
-#          cy + y + (x%2 / 2.0)
-#        )
+        get_tile(x, y).draw(cx + x - y, cy + ((x + y) / 2.0))
       end
     end
     @player.draw
     @enemy_1.draw(cx, cy)
     @enemy_2.draw(cx, cy)
+    @enemy_3.draw(cx, cy)
+    @enemy_4.draw(cx, cy)
+    @enemy_5.draw(cx, cy)
   end
 
 end

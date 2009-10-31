@@ -3,7 +3,8 @@ class Player
   attr_accessor :x, :y
 
   def initialize(window, world)
-    @sprite = Gosu::Image.new(window, 'media/base/player.png')
+#    @sprite = Gosu::Image.new(window, 'media/base/player.png')
+    @sprite = Gosu::Image.new(window, 'media/base/isometric/player.png')
     @x = 0.0
     @y = 0.0
     @speed = 0.05
@@ -16,7 +17,8 @@ class Player
   end
 
   def draw
-    @sprite.draw_rot(@window.width / 2, @window.height / 2 - 16, 2, 45 * @direction, 0.5, 0.5)
+#    @sprite.draw_rot(@window.width / 2, @window.height / 2 - 16, 2, 45 * @direction, 0.5, 0.5)
+    @sprite.draw(@window.width / 2, @window.height / 2, 2)
   end
 
   def translate(x, y)
