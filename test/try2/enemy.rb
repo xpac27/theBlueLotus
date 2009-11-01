@@ -31,7 +31,7 @@ class Enemy
 
   def draw(cx, cy)
 #    @sprite.draw_rot((@x + cx) * 32, (@y + cy) * 32, 2, 45 * @direction, 0.5, 0.5)
-    @sprite.draw((cx + @x - @y) * 32, (((@x + @y) / 2) + cy) * 32, 2)
+    @sprite.draw((cx + @x - @y) * 32, (((@x + @y) / 2) + cy) * 32, 1)
   end
 
   def translate(x, y)

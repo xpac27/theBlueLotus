@@ -18,7 +18,7 @@ class Player
 
   def draw
 #    @sprite.draw_rot(@window.width / 2, @window.height / 2 - 16, 2, 45 * @direction, 0.5, 0.5)
-    @sprite.draw(@window.width / 2, @window.height / 2, 2)
+    @sprite.draw(@window.width / 2, @window.height / 2, 1)
   end
 
   def translate(x, y)
