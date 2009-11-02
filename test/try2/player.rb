@@ -5,8 +5,10 @@ class Player
   def initialize(window, world)
 #    @sprite = Gosu::Image.new(window, 'media/base/player.png')
     @sprite = Gosu::Image.new(window, 'media/base/isometric/player.png')
+#    @text = Gosu::Font.new(window, Gosu::default_font_name, 15)
     @x = 0.0
     @y = 0.0
+    @size = 0.5
     @speed = 0.05
     @world = world
     @window = window
@@ -18,7 +20,11 @@ class Player
 
   def draw
 #    @sprite.draw_rot(@window.width / 2, @window.height / 2 - 16, 2, 45 * @direction, 0.5, 0.5)
-    @sprite.draw(@window.width / 2, @window.height / 2, 1)
+    x = @window.width / 2
+    y = @window.height / 2
+    z = @x.round * 32 + @y.round * 32
+    @sprite.draw(x - 16, y - 16, z)
+#    @text.draw(z, 10, 30, 5000, 1.0, 1.0, 0xFFFF0000)
   end
 
   def translate(x, y)
@@ -36,6 +42,7 @@ class Player
     ny = @y + y * @speed
 
     return unless @world.get_tile(nx.floor, ny.floor).type == 1
+    return unless @world.get_tile((nx + @size).floor, (ny + @size).floor).type == 1
 
     @x = nx
     @y = ny
