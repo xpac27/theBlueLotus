@@ -41,8 +41,13 @@ class Player
     nx = @x + x * @speed
     ny = @y + y * @speed
 
-    return unless @world.get_tile(nx.floor, ny.floor).type == 1
-    return unless @world.get_tile((nx + @size).floor, (ny + @size).floor).type == 1
+    if @world.get_tile((nx + @size).floor, (ny + @size).floor).type != 1 \
+    or @world.get_tile((nx + @size).floor, ny.floor).type != 1 \
+    or @world.get_tile(nx.floor, (ny + @size).floor).type != 1 \
+    or @world.get_tile(nx.floor, ny.floor).type != 1
+    then
+      return
+    end
 
     @x = nx
     @y = ny

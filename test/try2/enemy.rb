@@ -40,12 +40,17 @@ class Enemy
     nx = @x + x * @speed
     ny = @y + y * @speed
 
-    if @world.get_tile(nx.floor, ny.floor).type != 1 or @world.get_tile((nx + @size).floor, (ny + @size).floor).type != 1
+    if @world.get_tile((nx + @size).floor, (ny + @size).floor).type != 1 \
+    or @world.get_tile((nx + @size).floor, ny.floor).type != 1 \
+    or @world.get_tile(nx.floor, (ny + @size).floor).type != 1 \
+    or @world.get_tile(nx.floor, ny.floor).type != 1
+    then
       @direction = rand(7)
-    else
-      @x = nx
-      @y = ny
+      return
     end
+
+    @x = nx
+    @y = ny
   end
 
 end
