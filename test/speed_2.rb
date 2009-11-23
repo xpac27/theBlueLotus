@@ -142,7 +142,7 @@ class Square
   RED = [0.8, 0.1, 0.0, 1.0]
 
   def initialize
-    @size = 5
+    @size = 12
     @speed = 0.5
     @x = 0.0
     @y = 0.0

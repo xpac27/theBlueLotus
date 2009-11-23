@@ -42,7 +42,7 @@ class Square
     @window = window
     @size = 5
     @speed = 0.5
-    @color = 0xAACCCCCC
+    @color = 0xFFFF0000
     @x = @window.width/2
     @y = @window.height/2
     @direction = 0
