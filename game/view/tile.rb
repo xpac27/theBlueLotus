@@ -3,11 +3,11 @@ module View
   class Tile
 
     def initialize(m)
-      @image = Gosu::Image.new($WINDOW, m)
+      @media = m
     end
 
     def draw(x, y, z)
-      @image.draw((x*32), (y*32) - 16, z)
+      $MEDIA_LIST[@media].draw((x*32), (y*32) - 16, z)
     end
 
   end

@@ -9,12 +9,7 @@ require 'controler/world'
 class Game < Gosu::Window
 
   $WINDOW
-  $MEDIA_LIST = [
-    'media/image/test_0.0_floor.png',
-    'media/image/test_0.5_cube.png',
-    'media/image/test_1.0_cube.png'
-  ]
-
+  $MEDIA_LIST
 
   def initialize
     super(640, 480, false)

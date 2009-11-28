@@ -10,7 +10,7 @@ module Model
       @y = y
       @walkable = w
       @height = h
-      @view = View::Tile.new($MEDIA_LIST[m].to_s)
+      @view = View::Tile.new(m)
     end
 
     def update
