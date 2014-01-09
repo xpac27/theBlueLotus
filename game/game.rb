@@ -3,7 +3,7 @@
 
 require 'rubygems'
 require 'gosu'
-require 'controler/world'
+require './controler/world'
 
 
 class Game < Gosu::Window

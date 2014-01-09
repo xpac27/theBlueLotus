@@ -1,4 +1,4 @@
-require 'view/tile'
+require './view/tile'
 
 
 module Model

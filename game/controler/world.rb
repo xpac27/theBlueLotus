@@ -1,6 +1,6 @@
-require 'util/fps'
-require 'util/debug'
-require 'model/tile'
+require './util/fps'
+require './util/debug'
+require './model/tile'
 
 
 module Controler
