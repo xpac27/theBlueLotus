@@ -10,3 +10,7 @@ You need to install [Gosu](http://www.libgosu.org/). You can instal it with [rub
 cd game
 ./game.rb
 ```
+
+# Preview
+
+![preview](https://raw.github.com/xpac27/theBlueLotus/master/preview.png)
